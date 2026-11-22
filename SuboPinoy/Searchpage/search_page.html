@@ -1,1 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SUBO PINOY - Search</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-screen">
+    <!-- Top Banner -->
+    <header class="hero-banner">
+      <h1>
+        <span class="title-top">Welcome to</span>
+        <span class="title-bottom">SUBO PINOY</span>
+      </h1>
+    </header>
 
+    <main class="content-area">
+      <!-- Search Bar -->
+      <div class="search-box">
+        <input type="text" id="search-input" placeholder="Search..." autocomplete="off" />
+        <button type="button" id="clear-btn" class="clear-btn" aria-label="Clear search">✕</button>
+      </div>
+
+      <!-- Filter Pills -->
+      <div class="filter-pills" id="filter-pills">
+        <button class="pill active" data-filter="All">All</button>
+        <button class="pill" data-filter="Chicken">Chicken</button>
+        <button class="pill" data-filter="Pork">Pork</button>
+        <button class="pill" data-filter="Seafood">Seafood</button>
+        <button class="pill" data-filter="Easy">Easy</button>
+      </div>
+
+      <!-- Results Status & Sort (Hidden until user types) -->
+      <div class="results-header hidden" id="results-header">
+        <span class="status-badge" id="results-count">0 results</span>
+        <button class="sort-badge" id="sort-btn">Best Match ↓</button>
+      </div>
+
+      <!-- Dynamic Dish Cards -->
+      <ul class="results-list" id="results-list"></ul>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
