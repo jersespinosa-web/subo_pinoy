@@ -62,11 +62,6 @@ function updateSearchResults() {
 
   resultsList.innerHTML = "";
 
-  if (query === "" && activeCategory === "All") {
-    resultsMeta.style.display = "none";
-    return;
-  }
-
   let matches = dishes.filter(function (dish) {
     const matchesText = dish.name.toLowerCase().includes(query);
     const matchesCategory =
@@ -84,10 +79,13 @@ function updateSearchResults() {
   }
 
   resultsMeta.style.display = "flex";
-  resultsCount.textContent =
-    query !== ""
-      ? `${matches.length} results for "${searchInput.value.trim()}"`
-      : `${matches.length} results in ${activeCategory}`;
+  if (query !== "") {
+    resultsCount.textContent = `${matches.length} results for "${searchInput.value.trim()}"`;
+  } else if (activeCategory === "All") {
+    resultsCount.textContent = `${matches.length} results`;
+  } else {
+    resultsCount.textContent = `${matches.length} results in ${activeCategory}`;
+  }
 
   matches.forEach(function (dish) {
     const card = document.createElement("li");
@@ -146,3 +144,5 @@ filterPills.forEach(function (pill) {
     updateSearchResults();
   });
 });
+
+updateSearchResults();
