@@ -52,12 +52,12 @@ document.addEventListener('DOMContentLoaded', () => {
     if (isSignIn) {
       const confirmPassword = confirmPasswordInput.value;
       if (password !== confirmPassword) {
-        alert('Passwords do not match!');
-        return;
-      }
-      alert(Account created for ${username}!);
-    } else {
-      alert(Welcome back, ${username}!);
+      alert('Passwords do not match!');
+      return;
     }
+    alert(`Account created for ${username}!`);
+  } else {
+    alert(`Welcome back, ${username}!`);
+  }
   });
 });
