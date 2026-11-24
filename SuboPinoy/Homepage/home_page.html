@@ -1,49 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> SUBO PINOY - Filipino Recipes</title>
-    <link rel="stylesheet" href="style.css">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Subo Pinoy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Modak&family=Poppins:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-  <header class="hero-banner">
-    <div class="hero-content">
-      <div class="yellow-sticker">Welcome to</div>
-      <div class="yellow-sticker">
-        <span class="red-text">SUBO</span> 
-        <span class="blue-text">PINOY</span>
+  <main class="app">
+    <header class="banner">
+      <h1 class="banner__title">
+        <span class="badge badge--welcome">Welcome to</span>
+        <span class="badge badge--name">SUBO <span class="badge__accent">PINOY</span></span>
+      </h1>
+    </header>
+
+    <div class="content">
+      <label class="search">
+        <span aria-hidden="true">🔍</span>
+        <input class="search__input" id="search" type="search"
+               placeholder="Search for a Pinoy recipe..." autocomplete="off">
+      </label>
+
+      <nav class="categories" id="categories" aria-label="Categories">
+        <button class="categories__item" type="button" data-category="veggie"  aria-label="Vegetable dishes">🥬</button>
+        <button class="categories__item" type="button" data-category="chicken" aria-label="Chicken dishes">🍗</button>
+        <button class="categories__item" type="button" data-category="pork"    aria-label="Pork dishes">🍖</button>
+        <button class="categories__item" type="button" data-category="soup"    aria-label="Soups">🍲</button>
+        <button class="categories__item" type="button" data-category="beef"    aria-label="Beef dishes">🐂</button>
+      </nav>
+
+      <section class="grid" id="grid" aria-live="polite"></section>
+
+      <nav class="pager" aria-label="Pages">
+        <button class="pager__arrow" id="prev" type="button" aria-label="Previous page">←</button>
+        <div class="pager__dots" id="dots"></div>
+        <button class="pager__arrow" id="next" type="button" aria-label="Next page">→</button>
+      </nav>
+
+      <div class="user">
+        <img class="user__avatar" src="assets/avatar.jpg" alt="Profile photo">
+        <span class="user__name">YoMaMa_15</span>
       </div>
     </div>
-  </header>
-
-  <main class="website-container">
-
-    <div class="search-section">
-      <input type="text" id="searchInput" placeholder="Search for a Filipino recipe...">
-    </div>
-  <div class="category-row">
-      <button class="category-btn" data-category="stew"> 🥦 Vegetables</button>
-      <button class="category-btn" data-category="chicken">🍗 Chicken</button>
-      <button class="category-btn" data-category="pork">🥩 Pork</button>
-      <button class="category-btn" data-category="fish">🐟 Fish</button>
-      <button class="category-btn" data-category="beef">🐮 Beef</button>
-    </div>
-
-    <section id="recipeGrid" class="recipe-grid">
-
-    </section>
-    
-  <div class="bottom-controls">
-    
-  <button id="prevBtn" class="nav-arrow-btn">← Prev</button>
-  <div class="pill-track">
-    
-    <div class="pill-thumb" id="pillThumb"></div>
-  </div>
-    
-  <button id="nextBtn" class="nav-arrow-btn">Next →</button>
-</div>
-    
   </main>
+
+  <template id="card-template">
+    <article class="card">
+      <div class="card__photo"></div>
+      <h2 class="card__title"></h2>
+      <ul class="card__meta">
+        <li class="card__level"></li>
+        <li class="card__time"></li>
+      </ul>
+      <button class="card__go" type="button">→</button>
+    </article>
+  </template>
+
+  <script src="recipes.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
