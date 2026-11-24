@@ -1,1 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Subo Pinoy - Profile</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Modak&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="profile_page.css">
+</head>
+<body>
 
+  <div class="app-screen">
+    <main class="profile-container">
+      
+      <!-- HERO PROFILE CARD WITH OVERLAPPING AVATAR -->
+      <section class="profile-card-hero">
+        <div class="avatar-ring-wrapper">
+          <img src="images/subopfp.jpg" alt="User Avatar" class="avatar-circle" id="profile-avatar">
+        </div>
+        <div class="hero-content">
+          <h1 class="username-title" id="profile-username">YoMaMa_15</h1>
+          <div class="role-badge">Filipino Food Explorer</div>
+          <div class="stat-pills-row">
+            <span class="stat-pill">Favorites ❤</span>
+            <span class="stat-pill">Tried ✔</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- MAIN MENU: Search-Style Elevated Action Rows -->
+      <section class="action-rows-stack" id="view-menu">
+        <button type="button" class="action-row-card" data-target="view-settings">
+          <div class="icon-circle">⚙</div>
+          <span class="row-label">ACCOUNT SETTINGS</span>
+          <span class="arrow-badge">→</span>
+        </button>
+
+        <button type="button" class="action-row-card" data-target="view-favorites">
+          <div class="icon-circle">❤</div>
+          <span class="row-label">FAVORITES</span>
+          <span class="arrow-badge">→</span>
+        </button>
+
+        <button type="button" class="action-row-card" data-target="view-edit">
+          <div class="icon-circle">✎</div>
+          <span class="row-label">EDIT ACCOUNT</span>
+          <span class="arrow-badge">→</span>
+        </button>
+
+        <button type="button" class="action-row-card" data-target="view-activity">
+          <div class="icon-circle">⏱</div>
+          <span class="row-label">ACTIVITY</span>
+          <span class="arrow-badge">→</span>
+        </button>
+      </section>
+
+      <!-- SUB-PANEL CONTAINER: Cocoa Brown Framed View -->
+      <section class="panel-container hidden" id="sub-panel">
+        <h2 class="panel-title" id="panel-heading">FAVORITES</h2>
+        <div class="panel-content-body" id="panel-body"></div>
+      </section>
+
+      <!-- BOTTOM NAVIGATION PILLS -->
+      <footer class="bottom-actions">
+        <button type="button" class="action-pill logout-btn" id="btn-logout">LOG-OUT</button>
+        <button type="button" class="action-pill back-btn" id="btn-back">BACK</button>
+      </footer>
+
+    </main>
+  </div>
+
+  <script src="profile_store.js"></script>
+  <script src="profile_page.js"></script>
+</body>
+</html>

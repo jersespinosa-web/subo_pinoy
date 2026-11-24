@@ -1,1 +1,364 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
+body {
+  background-color: #222;
+  display: flex;
+  justify-content: center;
+  font-family: 'Poppins', sans-serif;
+}
+
+.app-screen {
+  width: 100%;
+  max-width: 430px;
+  min-height: 100vh;
+  background-color: #e5d3b3;
+  background-image: url("images/background-sample.jpg");
+  background-repeat: repeat-y;
+  background-size: 110px auto;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.profile-container {
+  width: 100%;
+  max-width: 390px;
+  margin: 0 auto;
+  padding: 36px 16px 28px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  flex: 1;
+}
+
+/* Hero Profile Card */
+.profile-card-hero {
+  background: #fbf6ec;
+  border: 3px solid #b59373;
+  border-radius: 18px;
+  padding: 16px 14px 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  position: relative;
+  margin-top: 32px;
+}
+
+.avatar-ring-wrapper {
+  width: 86px;
+  height: 86px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #e3bf52 0%, #c40206 100%);
+  padding: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: -43px;
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.avatar-circle {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  background-color: #fff;
+}
+
+.hero-content {
+  margin-top: 34px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  width: 100%;
+}
+
+.username-title {
+  font-family: 'Modak', cursive;
+  font-size: 24px;
+  color: #111;
+  letter-spacing: 0.5px;
+}
+
+.role-badge {
+  background-color: #e3bf52;
+  color: #222;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 10px;
+  border-radius: 999px;
+  margin-bottom: 6px;
+}
+
+.stat-pills-row {
+  display: flex;
+  gap: 8px;
+}
+
+.stat-pill {
+  background-color: #fff;
+  border: 1px solid #d4bda2;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 999px;
+  color: #333;
+}
+
+/* Action Rows Stack */
+.action-rows-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.action-row-card {
+  width: 100%;
+  height: 54px;
+  background-color: #f3efe6;
+  border: 2px solid #b59373;
+  border-radius: 14px;
+  padding: 0 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: transform 0.1s ease, background-color 0.15s ease;
+}
+
+.action-row-card:hover {
+  background-color: #fff;
+  transform: translateY(-1px);
+}
+
+.icon-circle {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: #c40206;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  box-shadow: 0 2px 6px rgba(196, 2, 6, 0.3);
+  flex-shrink: 0;
+}
+
+.row-label {
+  flex: 1;
+  text-align: left;
+  padding-left: 12px;
+  font-family: 'Modak', cursive;
+  font-size: 18px;
+  color: #111;
+  letter-spacing: 0.5px;
+}
+
+.arrow-badge {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #c40206;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+/* Framed Cocoa Brown Sub-Panel */
+.panel-container {
+  background-color: #8c6b53;
+  border: 6px solid #6f513b;
+  border-radius: 18px;
+  padding: 14px;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.22);
+  min-height: 290px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.panel-title {
+  font-family: 'Modak', cursive;
+  font-size: 21px;
+  font-weight: 400;
+  color: #ffffff;
+  text-align: center;
+  letter-spacing: 0.6px;
+  text-shadow: 0 2px 3px rgba(0, 0, 0, 0.35);
+}
+
+.panel-content-body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-height: 240px;
+  overflow-y: auto;
+}
+
+.recipe-card-mini {
+  display: flex;
+  align-items: center;
+  background-color: #d9d9d9;
+  border-radius: 12px;
+  padding: 8px 12px;
+  gap: 10px;
+}
+
+.recipe-thumb {
+  width: 52px;
+  height: 52px;
+  border-radius: 10px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.recipe-info {
+  flex: 1;
+}
+
+.recipe-title {
+  font-family: 'Modak', cursive;
+  font-size: 16px;
+  color: #000;
+  line-height: 1.1;
+  margin-bottom: 2px;
+}
+
+.recipe-meta-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-family: 'Modak', cursive;
+}
+
+.tag-cat {
+  background: #fff;
+  padding: 1px 8px;
+  border-radius: 999px;
+  color: #000;
+}
+
+.tag-diff {
+  color: #ff383c;
+}
+
+.remove-fav-btn {
+  background: #c40206;
+  color: #fff;
+  border: none;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slot-item {
+  background-color: #f3efe6;
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #1f1f1f;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.toggle-btn {
+  padding: 4px 12px;
+  border-radius: 999px;
+  border: none;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  background-color: #bbb;
+  color: #222;
+}
+
+.toggle-btn.on {
+  background-color: #c40206;
+  color: #fff;
+}
+
+.slot-input {
+  width: 100%;
+  background-color: #fff;
+  border: 2px solid #b59373;
+  border-radius: 8px;
+  padding: 9px 12px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: #111;
+  outline: none;
+}
+
+.slot-save-btn {
+  background-color: #c40206;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px;
+  font-family: 'Modak', cursive;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* Bottom Action Buttons */
+.bottom-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+  padding-top: 10px;
+}
+
+.action-pill {
+  min-width: 110px;
+  height: 38px;
+  border-radius: 999px;
+  padding: 0 18px;
+  font-family: 'Modak', cursive;
+  font-size: 16px;
+  letter-spacing: 0.5px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.18);
+  cursor: pointer;
+  border: 2px solid #5d422f;
+}
+
+.logout-btn {
+  background-color: #c40206;
+  color: #ffffff;
+}
+
+.back-btn {
+  background-color: #8c6b53;
+  color: #ffffff;
+}
+
+.hidden {
+  display: none !important;
+}
