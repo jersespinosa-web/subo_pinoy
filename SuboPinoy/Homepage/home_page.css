@@ -1,385 +1,62 @@
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Subo Pinoy</title>
 
-body {
-  font-family: 'Roboto', sans-serif;
-  color: #1a1a1a;
-  min-height: 100vh;
-  background-color: #917d6d; /* Exact warm taupe from your home page */
-}
+  <!-- Google Fonts (Modak + Archivo Black + Poppins) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Modak&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
 
-/* ================= HEADER BANNER (MATCHED TO HOME) ================= */
-.header-banner {
-  position: relative;
-  width: 100%;
-  height: 155px;
-  background-color: #dfb431;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.18);
-}
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
-.banner-crop {
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-}
+  <!-- Make sure this matches your CSS filename! -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
 
-.banner-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: 50% 42%;
-}
+  <div class="app-shell">
 
-/* Places "Welcome to" on the left and "SUBO PINOY" on the right */
-.banner-overlay-text {
-  position: absolute;
-  inset: 0;
-  max-width: 1120px;
-  margin: 0 auto;
-  padding: 0 40px 18px 40px;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  pointer-events: none;
-}
+    <header class="header-banner">
+      <div class="banner-crop">
+        <img
+          src="https://res.cloudinary.com/jerrick/image/upload/d_642250b563292b35f27461a7.png,f_jpg,fl_progressive,q_auto,w_1024/64805aa4ab39d1001d4bb832.jpg"
+          alt="Filipino dishes"
+          class="banner-img"
+        />
+      </div>
 
-.welcome-text {
-  font-family: 'Modak', cursive;
-  font-size: 46px;
-  font-weight: 400;
-  line-height: 1;
-  color: #DB2121;
-  -webkit-text-stroke: 12px #e5c64b;
-  paint-order: stroke fill;
-  margin-left: 6%;
-}
+      <p class="welcome-text">Welcome to</p>
 
-.brand-title {
-  font-family: 'Modak', cursive;
-  font-size: 48px;
-  font-weight: 400;
-  line-height: 1;
-  white-space: nowrap;
-  -webkit-text-stroke: 12px #e5c64b;
-  paint-order: stroke fill;
-  margin-right: 6%;
-}
+      <h1 class="brand-title">
+        <span class="subo">SUBO</span> <span class="pinoy">PINOY</span>
+      </h1>
+    </header>
 
-.subo {
-  color: #DB2121;
-}
+    <!-- Search Bar (closed properly with </div>!) -->
+    <div class="search-container">
+      <div class="search-bar">
+        <i class="fa-solid fa-magnifying-glass search-icon"></i>
+        <input
+          type="text"
+          id="searchInput"
+          placeholder="Search for a Pinoy recipe..."
+          autocomplete="off"
+        />
+      </div>
+    </div>
 
-.pinoy {
-  color: #1E58BC;
-}
 
-/* ================= MAIN DESKTOP CONTAINER ================= */
-.page-wrapper {
-  max-width: 1080px;
-  margin: 28px auto 60px auto;
-  padding: 0 28px;
-}
 
-/* Pill Search Bar (Matched to Home Page) */
-.search-bar {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  max-width: 680px;
-  margin: 0 auto 30px auto;
-  background-color: #e6e6e6;
-  padding: 12px 22px;
-  border-radius: 999px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
-}
+    <!-- Recipe Card Grid (now outside .search-container!) -->
+    <div id="recipeGrid" class="recipe-grid"></div>
 
-.search-icon {
-  font-size: 16px;
-  color: #666;
-}
+  </div>
 
-.search-bar input {
-  width: 100%;
-  border: none;
-  background: transparent;
-  font-size: 15px;
-  color: #333;
-  outline: none;
-}
-
-.search-bar input::placeholder {
-  font-style: italic;
-  color: #777;
-}
-
-/* Off-White Recipe Card (Matched to Home Page Cards) */
-.recipe-card {
-  background-color: #f3f3f3;
-  border-radius: 20px;
-  padding: 32px 36px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18);
-}
-
-/* Top Two-Column Desktop Split */
-.card-top-grid {
-  display: grid;
-  grid-template-columns: 1.05fr 1fr;
-  gap: 34px;
-  align-items: start;
-}
-
-/* Left Column: Photo + Floating Red Back Arrow */
-.photo-column {
-  position: relative;
-}
-
-.back-btn {
-  position: absolute;
-  top: 14px;
-  left: 14px;
-  width: 40px;
-  height: 40px;
-  background-color: #e02828;
-  color: #ffffff;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-  font-size: 20px;
-  font-weight: bold;
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.25);
-  transition: transform 0.15s ease, background-color 0.15s ease;
-}
-
-.back-btn:hover {
-  background-color: #c21d1d;
-  transform: scale(1.06);
-}
-
-.dish-photo {
-  width: 100%;
-  height: 380px;
-  object-fit: cover;
-  border-radius: 16px;
-  display: block;
-}
-
-/* Right Column: Title, Meta, Reviews, Ingredients */
-.title-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 14px;
-  margin-bottom: 12px;
-}
-
-.dish-title {
-  font-family: 'Roboto', sans-serif;
-  font-size: 30px;
-  font-weight: 900;
-  line-height: 1.1;
-  color: #111111;
-}
-
-.heart-btn {
-  background: none;
-  border: none;
-  font-size: 26px;
-  cursor: pointer;
-  color: #555;
-  transition: transform 0.15s ease, color 0.15s ease;
-}
-
-.heart-btn.liked {
-  color: #e02828;
-  transform: scale(1.15);
-}
-
-.meta-reviews-grid {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 20px;
-  padding-bottom: 18px;
-  border-bottom: 1px solid #dedede;
-}
-
-.meta-list {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.meta-item {
-  font-size: 15px;
-  font-weight: 500;
-  color: #e02828;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.add-recipe-btn {
-  margin-top: 6px;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background-color: #ffffff;
-  border: 1.5px solid #d6c8bc;
-  padding: 6px 14px;
-  border-radius: 999px;
-  font-size: 13.5px;
-  font-weight: 700;
-  color: #222;
-  cursor: pointer;
-  transition: background-color 0.15s ease, border-color 0.15s ease;
-}
-
-.add-recipe-btn:hover {
-  background-color: #f9f3ec;
-  border-color: #917d6d;
-}
-
-.plus-circle {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background-color: #e02828;
-  color: #fff;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
-  font-size: 15px;
-}
-
-/* Reviews Box */
-.reviews-box {
-  text-align: left;
-}
-
-.reviews-label {
-  font-weight: 700;
-  font-size: 15px;
-  margin-bottom: 4px;
-  color: #222;
-}
-
-.stars {
-  color: #f4c414;
-  font-size: 24px;
-  letter-spacing: 2px;
-  line-height: 1;
-}
-
-.rating-row {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-top: 6px;
-  font-size: 13.5px;
-}
-
-.review-count {
-  color: #666;
-}
-
-.add-review-link {
-  background: none;
-  border: none;
-  color: #555;
-  text-decoration: underline;
-  font-size: 13px;
-  cursor: pointer;
-}
-
-.add-review-link:hover {
-  color: #000;
-}
-
-/* Ingredients Box */
-.ingredients-panel {
-  margin-top: 18px;
-  background-color: #e7dfd8;
-  padding: 18px 22px;
-  border-radius: 14px;
-}
-
-.ingredients-panel h3 {
-  font-size: 17px;
-  font-weight: 800;
-  margin-bottom: 10px;
-  color: #1a1a1a;
-}
-
-.ingredients-list {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 6px 20px;
-  padding-left: 18px;
-  font-size: 14.5px;
-  font-weight: 500;
-  color: #262626;
-}
-
-/* ================= BOTTOM PROCEDURE SECTION ================= */
-.recipe-steps-section {
-  margin-top: 28px;
-  padding-top: 22px;
-  border-top: 1px solid #dedede;
-}
-
-.recipe-steps-section h3 {
-  font-size: 19px;
-  font-weight: 800;
-  margin-bottom: 14px;
-  color: #1a1a1a;
-}
-
-.steps-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 18px;
-}
-
-.step-card {
-  background-color: #e7dfd8;
-  border-radius: 14px;
-  padding: 18px 20px;
-  line-height: 1.55;
-  font-size: 14px;
-  color: #222;
-}
-
-.step-card h4 {
-  font-size: 15.5px;
-  font-weight: 800;
-  margin-bottom: 8px;
-  color: #111;
-}
-
-.step-card p + p {
-  margin-top: 8px;
-}
-
-/* Responsive fallback for smaller screens */
-@media (max-width: 860px) {
-  .banner-overlay-text {
-    padding: 0 20px 14px 20px;
-  }
-
-  .welcome-text,
-  .brand-title {
-    font-size: 32px;
-    margin: 0;
-  }
-
-  .card-top-grid,
-  .steps-grid {
-    grid-template-columns: 1fr;
-  }
-}
+  <!-- Make sure your JS file is named script.js in the same folder -->
+  <script src="script.js"></script>
+</body>
+</html>
