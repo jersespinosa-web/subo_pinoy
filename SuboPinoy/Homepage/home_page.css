@@ -5,19 +5,20 @@
 }
 
 body {
+  background-color: #2B2118;
   min-height: 100vh;
 }
 
 /* Fixed Desktop Frame (1200px wide) */
 .app-shell {
-  width: 1366px;
+  width: 1200px;
   min-height: 100vh;
   margin: 0 auto;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   box-shadow: 0 0 40px rgba(0, 0, 0, 0.35);
-  background-size: 1366x auto;
+  background-size: 450px auto;
   background-repeat: repeat;
 }
 
@@ -26,7 +27,7 @@ body {
    ========================================= */
 .header-banner {
   position: relative;
-  width: 1366px;
+  width: 100%;
   height: 210px;
   margin: 0;
 }
@@ -47,10 +48,10 @@ body {
 /* "Welcome to" on the upper-left */
 .welcome-text {
   position: absolute;
-  top: 140px;
-  left: 120px;
+  top: 26px;
+  left: 36px;
   font-family: 'Modak', cursive;
-  font-size: 72px;
+  font-size: 48px;
   font-weight: 400;
   line-height: 1;
   color: #DB2121;
@@ -61,8 +62,8 @@ body {
 /* "SUBO PINOY" overlapping the bottom-right edge */
 .brand-title {
   position: absolute;
-  bottom: -1px;
-  right: 120px;
+  bottom: -14px;
+  right: 40px;
   font-family: 'Modak', cursive;
   font-size: 72px;
   font-weight: 400;
@@ -85,7 +86,7 @@ body {
    ========================================= */
 .search-container {
   padding: 28px 24px 16px;
-  width: 900px;
+  width: 640px;
   margin: 0 auto;
 }
 
@@ -121,6 +122,9 @@ body {
   color: #6B6B6B;
 }
 
+/* =========================================
+   4-Column Desktop Recipe Grid
+   ========================================= */
 .recipe-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -177,17 +181,48 @@ body {
   border-radius: 50%;
   background: #D32F2F;
   color: #FFFFFF;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: grid;
+  place-items: center;
   text-decoration: none;
   font-size: 15px;
-  line-height: 1
-  flex-shrink: 0;
   transition: transform 0.15s ease, background-color 0.15s ease;
 }
 
-.arrow-btn i {
-  display: block;
-  line-height: 1;
+.arrow-btn:hover {
+  background-color: #B71C1C;
+  transform: scale(1.08);
+}
+
+/* =========================================
+   Desktop User Profile (Bottom-Left)
+   ========================================= */
+.profile-footer {
+  padding: 16px 36px 24px;
+  margin-top: auto;
+}
+
+.profile-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.avatar-img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #FFFFFF;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.16);
+}
+
+.username-pill {
+  background-color: #E5E5E5;
+  color: #111111;
+  font-family: 'Poppins', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 6px 18px;
+  border-radius: 999px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.14);
 }
