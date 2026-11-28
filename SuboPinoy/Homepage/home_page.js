@@ -1,62 +1,62 @@
-const PER_PAGE = 4;
-const recipes = [
-  {name:'Chicken Adobo', level:'Easy', time:'45 mins', cat:'chicken', img:'chicken-adobo'},
-  {name:'Pork Sinigang', level:'Medium', time:'1 hr', cat:'soup', img:'pork-sinigang'},
-  {name:'Beef Caldereta', level:'Medium', time:'2 hrs', cat:'beef', img:'beef-caldereta'},
-  {name:'Lumpia', level:'Easy', time:'30 mins', cat:'pork', img:'lumpia'},
-  {name:'Kare-Kare', level:'Hard', time:'3 hrs', cat:'beef', img:'kare-kare'},
-  {name:'Sisig', level:'Medium', time:'1 hr', cat:'pork', img:'sisig'},
-  {name:'Tinola', level:'Easy', time:'40 mins', cat:'soup', img:'tinola'},
-  {name:'Pinakbet', level:'Easy', time:'35 mins', cat:'veggie', img:'pinakbet'},
-];
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Subo Pinoy</title>
 
-let page = 0, query = '', cat = null;
-const $ = id => document.getElementById(id);
+  <!-- Google Fonts (Modak + Archivo Black + Poppins) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Modak&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
 
-function filtered(){
-  return recipes.filter(r =>
-    r.name.toLowerCase().includes(query) && (!cat || r.cat === cat));
-}
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
-function render(){
-  const list = filtered();
-  const pages = Math.max(1, Math.ceil(list.length / PER_PAGE));
-  page = Math.min(page, pages - 1);
+  <!-- Make sure this matches your CSS filename! -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
 
-  $('grid').innerHTML = list.length
-    ? list.slice(page*PER_PAGE, page*PER_PAGE + PER_PAGE).map(r => `
-      <article class="card">
-        <div class="photo" style="background-image:url('assets/${r.img}.jpg')"></div>
-        <h2>${r.name}</h2>
-        <div class="meta"><span>♨ ${r.level}</span><span>🕒 ${r.time}</span></div>
-        <button class="go" aria-label="Open ${r.name}" data-name="${r.name}">→</button>
-      </article>`).join('')
-    : '<p class="empty">No recipes found.</p>';
+  <div class="app-shell">
 
-  $('dots').innerHTML = Array.from({length: pages}, (_, i) =>
-    `<button class="dot${i === page ? ' active' : ''}" data-page="${i}" aria-label="Page ${i+1}"></button>`).join('');
-  $('prev').disabled = page === 0;
-  $('next').disabled = page >= pages - 1;
-}
+    <header class="header-banner">
+      <div class="banner-crop">
+        <img
+          src="https://res.cloudinary.com/jerrick/image/upload/d_642250b563292b35f27461a7.png,f_jpg,fl_progressive,q_auto,w_1024/64805aa4ab39d1001d4bb832.jpg"
+          alt="Filipino dishes"
+          class="banner-img"
+        />
+      </div>
 
-$('search').addEventListener('input', e => { query = e.target.value.trim().toLowerCase(); page = 0; render(); });
+      <p class="welcome-text">Welcome to</p>
 
-$('categories').addEventListener('click', e => {
-  const b = e.target.closest('.cat'); if (!b) return;
-  cat = cat === b.dataset.cat ? null : b.dataset.cat;
-  document.querySelectorAll('.cat').forEach(c => c.classList.toggle('active', c.dataset.cat === cat));
-  page = 0; render();
-});
+      <h1 class="brand-title">
+        <span class="subo">SUBO</span> <span class="pinoy">PINOY</span>
+      </h1>
+    </header>
 
-$('prev').onclick = () => { page--; render(); };
-$('next').onclick = () => { page++; render(); };
-$('dots').addEventListener('click', e => {
-  const d = e.target.closest('.dot'); if (d){ page = +d.dataset.page; render(); }
-});
+    <!-- Search Bar (closed properly with </div>!) -->
+    <div class="search-container">
+      <div class="search-bar">
+        <i class="fa-solid fa-magnifying-glass search-icon"></i>
+        <input
+          type="text"
+          id="searchInput"
+          placeholder="Search for a Pinoy recipe..."
+          autocomplete="off"
+        />
+      </div>
+    </div>
 
-// Placeholder: replace with navigation to the recipe detail page
-$('grid').addEventListener('click', e => {
-  const g = e.target.closest('.go'); if (g) console.log('Open recipe:', g.dataset.name);
-});
 
-render();
+
+    <!-- Recipe Card Grid (now outside .search-container!) -->
+    <div id="recipeGrid" class="recipe-grid"></div>
+
+  </div>
+
+  <!-- Make sure your JS file is named script.js in the same folder -->
+  <script src="script.js"></script>
+</body>
+</html>
